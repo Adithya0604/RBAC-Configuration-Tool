@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+RBAC Configuration Tool – README
 
-## Getting Started
+Project Overview
+This is a Full‑Stack RBAC (Role‑Based Access Control) Configuration Tool built with Next.js + TypeScript + Supabase.
+It allows an admin to:
+- Manage Roles (CRUD)
+- Manage Permissions (CRUD)
+- Link Roles to Permissions (assign permissions to roles)
+- Authenticate Users with Supabase Auth
 
-First, run the development server:
+This fulfills the mandatory features from the assignment.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Tech Stack
+- Frontend: Next.js 14 + TypeScript + Tailwind CSS (Shadcn UI components)
+- Backend / DB: Supabase (Postgres, Auth, API)
+- Deployment: Vercel
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Requirements to Run Locally
+- Node.js 18+
+- npm or yarn
+- Supabase account (free)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Setup Instructions
+1. Clone the repository
+   git clone <your-repo-url>
+   cd rbac-configurator
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies
+   npm install
 
-## Learn More
+3. Setup Supabase
+   - Create a new Supabase project
+   - Go to Table Editor → create tables:
+       roles
+       permissions
+       role_permissions
+       user_roles
+   - Copy your Project URL, anon key, and service role key
 
-To learn more about Next.js, take a look at the following resources:
+4. Configure Environment Variables
+   - Create a file .env.local in the project root:
+     NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Run the development server
+   npm run dev
+   Visit → http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Key Routes
+/ → Login page
+/dashboard → Admin dashboard
+/dashboard/role → Manage roles
+/dashboard/permission → Manage permissions
+/dashboard/link → Link roles & permissions
 
-## Deploy on Vercel
+Deployment
+1. Push to GitHub
+2. Deploy on Vercel
+3. Add .env variables in Vercel Project Settings → Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+RBAC Explained for a Kid (50 words)
+RBAC is like a school:
+Teachers (roles) can do thinfs like chwck homework (permissions).
+Students (roles) can only read books (permissions).
+We give each person a role, and tht role decides what they can or cannot do.
